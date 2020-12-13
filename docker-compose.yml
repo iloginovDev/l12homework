@@ -11,7 +11,7 @@ services:
     ports:
       - "3306:3306"
     volumes: 
-      - dbdata: "/var/lib/mysql"
+      - "dbdata:/var/lib/mysql"
     environment: 
       MYSQL_USER: bduser
       MYSQL_PASSWORD: BDPassWord123
