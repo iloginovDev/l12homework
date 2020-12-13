@@ -1,0 +1,33 @@
+---
+version: '3'
+
+services: 
+  db:
+    image: mysql:5
+    hostname: dbhost
+    networks:
+      - appnetwork
+    ports:
+      - "3306:3306"
+    volumes: 
+      - dbdata: /var/lib/mysql
+    environment: 
+      MYSQL_USER: bduser
+      MYSQL_PASSWORD: BDPassWord123
+      MYSQL_DATABASE: appbd
+      MYSQL_ROOT_PASSWORD: BDPassWord123    
+
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    hostname: apphost  
+    networks:
+      - appnetwork
+    ports:
+      - "8080:8080"
+    
+volumes: 
+  dbdata:
+networks: 
+  appnetwork:
