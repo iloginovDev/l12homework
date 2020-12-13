@@ -5,6 +5,7 @@ services:
   db:
     image: mysql:5
     hostname: dbhost
+    restart: always
     networks:
       - appnetwork
     ports:
@@ -21,6 +22,7 @@ services:
     build: 
       context: .
       dockerfile: Dockerfile
+    restart: always  
     hostname: apphost  
     networks:
       - appnetwork
